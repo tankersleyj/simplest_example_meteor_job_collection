@@ -28,7 +28,6 @@ myJobs.processJobs(
   }
 );
 
-
 Meteor.methods({
   submit:function(){
     console.log('Sumbitting test job "Echo" ');
@@ -43,15 +42,15 @@ Meteor.methods({
     );
 
     // Set some properties of the job
-    newEchoJob.priority('normal')
+    newEchoJob.priority('normal');
 
     newEchoJob.repeat({
-        repeats: 2, //the 'echo': repeats two more times in addition to the initial
-        wait: 10 //milliseconds TODO: why is this waiting 15 seconds between repeats? Is something blocking?
-      })
+      repeats: 2, //the 'echo': repeats two more times in addition to the initial
+      wait: 10 //milliseconds TODO: why is this waiting 15 seconds between repeats? Is something blocking?
+    });
 
     // submit the job, will set the status to 'waiting'.
-    newEchoJob.save()
+    newEchoJob.save();
 
     return
   }
