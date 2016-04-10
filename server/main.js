@@ -5,7 +5,6 @@ myJobs = JobCollection('myJobQueue');
 Meteor.startup(function () {
   // Start the myJobs queue running
   return myJobs.startJobServer();
-
 });
 
 // queue for jobs fo type 'echo'
