@@ -5,10 +5,10 @@ waitQueue = JobCollection('waitQueue');
 Meteor.startup(function(){
   waitQueue.startJobServer();
 
-  waitQueue.processJobs( // TODO: shouldn't this run in startup?
+  waitQueue.processJobs(
     // Type of job to request
     // Can also be an array of job types
-    'wait',
+    'callLongWaitTask',
     {
       pollInterval: 1*1000, // Poll every 1 second
     },
@@ -17,13 +17,13 @@ Meteor.startup(function(){
       console.log("job process triggered");
       // Only called when there is a valid job
 
-      //job.data is a data object the developer can pass when submitting up a new job.
-      console.log( job.data );
+      //Run a meteor method as the task.
+
       Meteor.call('longWait', 5000, function(error, res){
         console.log("longWait Method callback");
-
         if (res) {
           console.log(res);
+          //job.data is a data object the developer can pass when submitting up a new job.
           job.done(); // Only mark the job done if we have a response
         }
         if (error) {
@@ -42,29 +42,25 @@ Meteor.startup(function(){
 
 Meteor.methods({
   longWaitSubmit:function(){
-    console.log('Sumbitting test job "Echo" ');
+    console.log('Sumbitting task type "callLongWaitTask" ');
 
-    var newEchoJob = new Job(waitQueue, //the job collection to use
-      'wait', // type of job
-      // A data object that will be made available to the job worker. See 'job.data' above
-      {
-        message: 'Hello, is there anybody in here?'
-      }
-    );
-
-    // submit the job, will set the status to 'waiting'.
-    newEchoJob.save();
+    Job(waitQueue, //the job collection to use
+      'callLongWaitTask', // type of job
+      {} //job data
+    ).save();// submit the job to status: "ready"
 
     return
   },
   longWait: function(milliseconds){
+    console.log("Some work is being done in this Meteor method longWait" );
 
     var fut = new Future();
 
+    //let's pretend the work takes 'milliseconds' time to complete.
     Meteor.setTimeout(function(){
-      console.log("This is the timeout action");
 
-       fut['return']("Delayed :" + milliseconds + "ms");
+
+       fut['return']("The return is delayed :" + milliseconds + "ms");
 
       // return "waiting " + milliseconds + "ms to return"
     }, milliseconds);
