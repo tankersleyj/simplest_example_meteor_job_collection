@@ -6,5 +6,18 @@
   },
   "dependencies": {
     "meteor-node-stubs": "~0.2.0"
-  }
+  },
+  "description": "Simplest example of vsivsi's excellent job-collection for Meteor framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keyscores/simplest_example_meteor_job_collection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keyscores/simplest_example_meteor_job_collection/issues"
+  },
+  "homepage": "https://github.com/keyscores/simplest_example_meteor_job_collection#readme"
 }

@@ -2,8 +2,12 @@ import { Template } from 'meteor/templating';
 import './main.html';
 
 Template.hello.events({
-  'click button'(event, instance) {
+  'click #basicSubmit'(event, instance) {
     // increment the counter when button is clicked
-    Meteor.call('submit')
+    Meteor.call('basicSubmit')
+  },
+  'click #repeatSubmit'(event, instance) {
+    // increment the counter when button is clicked
+    Meteor.call('repeatSubmit')
   },
 });
