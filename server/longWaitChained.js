@@ -1,15 +1,14 @@
-
 import { Meteor } from 'meteor/meteor';
 import Future from 'fibers/future';
-waitQueue = JobCollection('waitQueue');
+waitQueueChained = JobCollection('waitQueueChained');
 
 Meteor.startup(function(){
-  waitQueue.startJobServer();
+  waitQueueChained.startJobServer();
 
-  waitQueue.processJobs(
+  waitQueueChained.processJobs(
     // Type of job to request
     // Can also be an array of job types
-    'callLongWaitTask',
+    'theWaitingTask',
     {
       pollInterval: 1*1000, // Poll every 1 second
     },
@@ -20,8 +19,8 @@ Meteor.startup(function(){
 
       //Run a meteor method as the task.
 
-      Meteor.call('longWait', function(error, res){
-        console.log("longWait Method callback");
+      Meteor.call('chainedFunction', function(error, res){
+        console.log("Method callback");
         if (res) {
           console.log(res);
           //job.data is a data object the developer can pass when submitting up a new job.
@@ -42,28 +41,30 @@ Meteor.startup(function(){
 
 
 Meteor.methods({
-  triggerLongWaitTask:function(){
+  triggerLongWaitChainedTask:function(){
     console.log('Sumbitting task type "callLongWaitTask" ');
 
-    Job(waitQueue, //the job collection to use
-      'callLongWaitTask', // type of job
+    Job(waitQueueChained, //the job collection to use
+      'theWaitingTask', // type of job
       {} //job data
     ).save();// submit the job to status: "ready"
 
     return
   },
-  longWait: function(){
+  chainedFunction:function(){
+    //just an intermediary wrapper between the other slow function.
+    Meteor.call('reallyLongWait');
+
+    return
+  },
+  reallyLongWait: function(){
     console.log("Called Meteor method 'longWait'. This will take some time to completed." );
     var milliseconds = 30000
-
     var fut = new Future();
 
     //let's pretend the work takes 'milliseconds' time to complete.
     Meteor.setTimeout(function(){
-
-
-       fut['return']("The return is delayed :" + milliseconds + "ms");
-
+       fut.return("The job completed after: " + milliseconds + "ms");
       // return "waiting " + milliseconds + "ms to return"
     }, milliseconds);
 
