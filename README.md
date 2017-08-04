@@ -1,5 +1,7 @@
-# simplest_example_meteor_job_collection
-Simplest example of vsivsi's excellent job-collection for Meteor framework
+However "meteor-job-collection-playground" also has library dependencies that lpgeiger's minimal "simplest_example" example below does not.
 
-Uses Meteor 1.7 and CoffeeScript
-(forked from JavaScript original at https://github.com/lpgeiger/simplest_example_meteor_job_collection)
+Job playground: https://github.com/vsivsi/meteor-job-collection-playground
+
+Simple "job-collection" example: https://github.com/lpgeiger/simplest_example_meteor_job_collection
+
+Simple CoffeeScript: https://github.com/tankersleyj/simplest_example_meteor_job_collection
