@@ -1,6 +1,5 @@
-Job-Collection has great functionality and the "playground" is impressive.
 
-However "meteor-job-collection-playground" also has library dependencies that lpgeiger's minimal "simplest_example" example below does not.
+Vaughn Iverson's (vsisi) "meteor-job-collection-playground" has great functionality but also has library dependencies that lpgeiger's minimal "simplest_example" example below does not.
 
 Job playground: https://github.com/vsivsi/meteor-job-collection-playground
 
