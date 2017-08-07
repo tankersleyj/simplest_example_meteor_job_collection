@@ -1,11 +1,11 @@
 Vaughn Iverson's "meteor-job-collection" example links:
 *main library: https://github.com/vsivsi/meteor-job-collection*
 
-quick examples:
+Quick examples:
 [atmospherejs quick-example](https://atmospherejs.com/vsivsi/job-collection#user-content-quick-example)
 [github quick-example](https://github.com/vsivsi/meteor-job-collection#user-content-quick-example)
 
-playground:
+Playground:
 [playground live app](https://jcplayground.meteorapp.com)
 [playground code](https://github.com/vsivsi/meteor-job-collection-playground)
 
