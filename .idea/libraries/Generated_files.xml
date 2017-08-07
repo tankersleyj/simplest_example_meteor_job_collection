@@ -2,19 +2,19 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/server/depends.js" />
         <item url="file://$PROJECT_DIR$/server/longWaitChained.js" />
         <item url="file://$PROJECT_DIR$/server/simplest.js" />
-        <item url="file://$PROJECT_DIR$/server/longWait.js" />
+        <item url="file://$PROJECT_DIR$/server/depends.js" />
         <item url="file://$PROJECT_DIR$/client/main.js" />
+        <item url="file://$PROJECT_DIR$/server/longWait.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/server/depends.js" />
       <root url="file://$PROJECT_DIR$/server/longWaitChained.js" />
       <root url="file://$PROJECT_DIR$/server/simplest.js" />
-      <root url="file://$PROJECT_DIR$/server/longWait.js" />
+      <root url="file://$PROJECT_DIR$/server/depends.js" />
       <root url="file://$PROJECT_DIR$/client/main.js" />
+      <root url="file://$PROJECT_DIR$/server/longWait.js" />
     </CLASSES>
     <SOURCES />
   </library>
